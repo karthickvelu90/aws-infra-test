@@ -1,3 +1,13 @@
-encryptionsalt: v1:MYsC24CW1zQ=:v1:JqsxB9l/991Amrv9:Tpwb6Y841TjKb7Zj+bLiPpT5x98W6A==
+encryptionsalt: v1:qRYaOj0bZsg=:v1:TUHA7EkEzqUY9d0h:UIb5mCgoXDTwjww1q/OXrSZBWtwJWQ==
 config:
-  aws:region: us-east-1
+  prod:aws_region: "ca-central-1" # Region in which resource to be deployed. 
+  prod:vpc_name: "aws-prod-vpc"   # VPC name for the project.  
+  prod:tags: [{"Environment": "prod"}] # Tags for all resources.
+  prod:vpc_cidr: "10.10.0.0/16"   # IP range cidr for all VPC.
+  prod:subnet_cidr_mask: "/24"    # Mask to be specified for subnet. 
+  prod:instanceType: "t3.medium"  # Node Type for the Node Group. 
+  prod:min_size: 2    # Auto Scaling min instance count.
+  prod:max_size: 5    # Auto Scaling Max instance count.
+  prod:NodeGroupList: [tools, microservice]  # List of Node Group to create. 
+  prod:cluster_name : "aws-prod-eks-cluster" # EKS cluster name to create. 
+  prod:serviceList: [infraapi, infra-web] #List to get the list of service to be deployed in kubernetes cluster. 
