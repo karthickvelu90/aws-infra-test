@@ -16,13 +16,13 @@
      2. Enabled HPA to scale up during peak load. Scaling will occur either of CPU or Memory utilization reaches 60%
      3. Assuming the CI pipeline will push the Docker image to ECR, repository URL will be updated.
      4. Accessible via Network Load Balancer with port 80. Internally pod exposes the service in 5000 port. service type marked as "LoadBalancer"
-     5. Resources are defined for pods which can be determined based on performance testing.
+     5. Resources request and limit are defined for pods. Actual value need to be determined based on performance testing.
      6. Node Selector and Tolerations are added to pods to ensure pod get deployed in respective Node Group.
         
    ## b. infraapi
       
      1. Assuming the CI pipeline will push the Docker image to ECR, repository URL will be updated.
      2. Enabled HPA to scale up during peak load. Scaling will occur either of CPU or Memory utilization reaches 60%
-     3. Accessible via Network Load Balancer with port 80. Internally pod exposes the service in 5000 port. service type marked as "LoadBalancer"
-     4. Resources are defined for pods which can be determined based on performance testing.
+     3. Accessible only within the cluster. Internally pod exposes the service in 5000 port. Service Type marked as "LoadBalancer"
+     4. Resources request and limit are defined for pods. Actual value need to be determined based on performance testing.
      5. Node Selector and Tolerations are added to pods to ensure pod get deployed in respective Node Group. 
