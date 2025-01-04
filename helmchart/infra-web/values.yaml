@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-namespace: service
+namespace: default
 
 image:
   repository: https://<aws_account_id>.dkr.ecr.region.amazonaws.com/infra-web

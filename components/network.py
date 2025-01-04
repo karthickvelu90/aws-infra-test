@@ -1,4 +1,5 @@
 import pulumi
+import pulumi_aws as aws
 import pulumi_awsx as awsx
 
 
@@ -35,4 +36,61 @@ class network:
             ],
             opts=pulumi.ResourceOptions(provider=self.provider)
         )        
-        return create_vpc
+    
+    # Create an Internet Gateway
+        internet_gateway = aws.ec2.InternetGateway("internetGateway",
+            vpc_id=vpc.vpc_id,
+            tags=self.tags
+        )
+
+    # Create an Elastic IP for the NAT Gateway
+        nat_eip = aws.ec2.Eip("natEip", 
+            vpc=True
+        )
+
+    # Create a NAT Gateway in one of the public subnets
+        nat_gateway = aws.ec2.NatGateway("natGateway",
+            allocation_id=nat_eip.id,
+            subnet_id=vpc.public_subnet_ids[0],
+            tags=self.tags
+        )
+
+    # Create route table for the public subnets
+        public_route_table = aws.ec2.RouteTable("publicRouteTable",
+            vpc_id=vpc.vpc_id,
+            routes=[
+                aws.ec2.RouteTableRouteArgs(
+                    cidr_block="0.0.0.0/0",
+                    gateway_id=internet_gateway.id
+                )
+            ],
+            tags=self.tags
+        )
+
+    # Create route table for the private subnets
+        private_route_table = aws.ec2.RouteTable("privateRouteTable",
+            vpc_id=vpc.vpc_id,
+            routes=[
+                aws.ec2.RouteTableRouteArgs(
+                    cidr_block="0.0.0.0/0",
+                    nat_gateway_id=nat_gateway.id
+                )
+            ],
+            tags=self.tags
+        )
+
+    # Associate public subnets to the public route table
+        for subnet_id in vpc.public_subnet_ids:
+            aws.ec2.RouteTableAssociation(f"publicRouteTableAssociation-{subnet_id}",
+                route_table_id=public_route_table.id,
+                subnet_id=subnet_id
+            )
+
+    # Associate private subnets to the private route table
+        for subnet_id in vpc.private_subnet_ids:
+            aws.ec2.RouteTableAssociation(f"privateRouteTableAssociation-{subnet_id}",
+                route_table_id=private_route_table.id,
+                subnet_id=subnet_id
+            )
+        
+        return create_vpc    
