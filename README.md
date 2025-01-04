@@ -2,9 +2,10 @@
 
 ## Deployment Details : 
 
+## Step
 1. Creates Amazon Virtual Provate Cloud(VPC) - AWS crosswalk module used to create VPC and subnet.
    
-2. Creates a Elastic kubernetes Service (EKS) cluster with two node group. Pulumi_eks module used to create eks cluster and Node Group. 
+2. Creates Elastic kubernetes Service (EKS) cluster with two node group. Pulumi_eks module used to create eks cluster and Node Group. 
    a. Tools - Min Node count 2 and scaling upto 5 nodes during peek load. 
    b. Microservice - Min Node count 2 and scaling upto 5 nodes during peek load.
    
