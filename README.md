@@ -27,3 +27,9 @@
      3. Accessible only within the cluster. Internally pod exposes the service in 5000 port. Service Type marked as "LoadBalancer"
      4. Resources request and limit are defined for pods. Actual value need to be determined based on performance testing.
      5. Node Selector and Tolerations are added to pods to ensure pod get deployed in respective Node Group. 
+
+
+Assumption: 
+1. AWS account exists with all API enabled.
+2. 
+3. Cloud Nat is configured already
