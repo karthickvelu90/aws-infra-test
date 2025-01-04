@@ -1,6 +1,6 @@
 # aws-infra-test
 
-##Deployment Details : 
+## Deployment Details : 
 
 1. Creates Amazon Virtual Provate Cloud(VPC) - AWS crosswalk module used to create VPC and subnet.
    
