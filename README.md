@@ -1,11 +1,13 @@
 # aws-infra-test
 
-Deployment Details : 
+##Deployment Details : 
 
-1. Creates Amazon Virtual Provate Cloud(VPC)
-2. Creates a Elastic kubernetes Service (EKS) cluster with two node group.
+1. Creates Amazon Virtual Provate Cloud(VPC) - AWS crosswalk module used to create VPC and subnet.
+   
+2. Creates a Elastic kubernetes Service (EKS) cluster with two node group. Pulumi_eks module used to create eks cluster and Node Group. 
    a. Tools - Min Node count 2 and scaling upto 5 nodes during peek load. 
-   b. Microservice - Min Node count 2 and scaling upto 5 nodes during peek load. 
+   b. Microservice - Min Node count 2 and scaling upto 5 nodes during peek load.
+   
 3. Deploy two services using helm chart detailed inside helmchart folder.
    
    ## a. infra-web
@@ -24,5 +26,3 @@ Deployment Details :
      3. Accessible via Network Load Balancer with port 80. Internally pod exposes the service in 5000 port. service type marked as "LoadBalancer"
      4. Resources are defined for pods which can be determined based on performance testing.
      5. Node Selector and Tolerations are added to pods to ensure pod get deployed in respective Node Group. 
-        
-5.  
