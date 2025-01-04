@@ -21,7 +21,7 @@ class eks:
         
 # Method for Node group creation based on input list provided. 
     def nodeGroup(self , NodeGroupName):
-       return eks.ManagedNodeGroup(f"{NodeGroupName}-node-group",
+        return eks.ManagedNodeGroup(f"{NodeGroupName}-node-group",
             cluster=cluster.core,
             node_group_name=NodeGroupName,
             node_role=cluster.instance_role,
@@ -40,7 +40,7 @@ class eks:
                 "effect": "NoSchedule",  # Possible values: NoSchedule, PreferNoSchedule, NoExecute
             },
             opts=pulumi.ResourceOptions(provider=self.provider)
-        )
+            )
 
 # Method for EKS cluster creation. 
     def eksCluster(self):
