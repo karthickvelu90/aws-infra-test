@@ -35,8 +35,8 @@
 3. APIs of VPC, EKS are enabled in the account region. 
 
 ## IAC Execution step:
-1. This code assumes the stack as "PROD".
-2. Initialize the local virtual environment with dependencies. poetry is used to download dependencies.
+1. Create stack as "PROD" to consume the input params from "Pulumi-prod.yaml"
+2. Initialize the local virtual environment with dependencies. Poetry is used to download dependencies.
 3. Run "Pulumi Preview" command to validate before execution.
 4. Once resource creation validated successfully, Run "Pulumi up" command to create required Infra components.
 
