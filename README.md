@@ -11,7 +11,7 @@
    
 3. Deploy two services using helm chart detailed inside helmchart folder.
    
-   ## a. infra-web
+   ### a. infra-web
    
      1. Added environment variable "ApiAddress" to access the infraapi service internally.
      2. Enabled HPA to scale up during peak load. Scaling will occur either of CPU or Memory utilization reaches 60%
@@ -20,7 +20,7 @@
      5. Resources request and limit are defined for pods. Actual value need to be determined based on performance testing.
      6. Node Selector and Tolerations are added to pods to ensure pod get deployed in respective Node Group.
         
-   ## b. infraapi
+   ### b. infraapi
       
      1. Assuming the CI pipeline will push the Docker image to ECR, repository URL will be updated.
      2. Enabled HPA to scale up during peak load. Scaling will occur either of CPU or Memory utilization reaches 60%
@@ -29,7 +29,18 @@
      5. Node Selector and Tolerations are added to pods to ensure pod get deployed in respective Node Group. 
 
 
-Assumption: 
-1. AWS account exists with all API enabled.
-2. 
-3. Cloud Nat is configured already
+## Assumption: 
+1. AWS account is avaliable. 
+2. User executing the code was granted IAM policy. 
+3. APIs of VPC, EKS are enabled in the account region. 
+
+## IAC Execution step:
+1. This code assumes the stack as "PROD".
+2. Initialize the local virtual environment with dependencies. poetry is used to download dependencies.
+3. Run "Pulumi Preview" command to validate before execution.
+4. Once resource creation validated successfully, Run "Pulumi up" command to create required Infra components.
+
+
+![aws_infra](https://github.com/user-attachments/assets/2ace5821-2611-494a-9e1a-660e0b380f95)
+
+   
