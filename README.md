@@ -2,7 +2,12 @@
 
 ## Deployment Details : 
 
-## Step
+## Components
+Component Folder contains three class files to create 
+a. Network resources
+b. Elastic Kubernetes Service 
+c. Helm chart for service deployment. 
+
 1. Creates Amazon Virtual Private Cloud(VPC) - AWS crosswalk module used to create VPC and subnet.
    
 2. Creates Elastic kubernetes Service (EKS) cluster with two node group. Pulumi_eks module used to create eks cluster and Node Group. 
