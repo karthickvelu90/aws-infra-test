@@ -4,9 +4,9 @@
 
 ## Components
 Component Folder contains three class files to create 
- 1. Network resources
- 2. Elastic Kubernetes Service 
- 3. Helm chart for service deployment. 
+ * Network resources
+ * Elastic Kubernetes Service 
+ * Helm chart for service deployment. 
 
 1. Creates Amazon Virtual Private Cloud(VPC) - AWS crosswalk module used to create VPC and subnet.
    
