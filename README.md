@@ -8,7 +8,7 @@ Component Folder contains three class files to create
  * Elastic Kubernetes Service 
  * Helm chart for service deployment. 
 
-1. Creates Amazon Virtual Private Cloud(VPC) - AWS crosswalk module used to create VPC and subnet.
+1. Creates Amazon Virtual Private Cloud(VPC) - AWS crosswalk module used to create VPC, Public and Private subnet, Nate Gateway. 
    
 2. Creates Elastic kubernetes Service (EKS) cluster with two node group. Pulumi_eks module used to create eks cluster and Node Group. 
    a. Tools - Min Node count 2 and scaling up to max 5 nodes during peek load. 
